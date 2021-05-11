@@ -10,6 +10,19 @@ const applicationState = {
     }
 }
 
+export const setChosenProduct = (id) => {
+    const doesExist = applicationState.orderBuilder.chosenProducts.indexOf(id)  // -1 if not found, 0+ if it is
+
+    // id not in array
+    if (doesExist < 0) {
+        applicationState.orderBuilder.chosenProducts.push(id)
+    }
+    // id is in array
+    else {
+        applicationState.orderBuilder.chosenProducts.splice(doesExist, 1)
+    }
+}
+
 export const saveOrderToAPI = () => {
     console.log(applicationState.orderBuilder)
 }
