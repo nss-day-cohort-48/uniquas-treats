@@ -1,4 +1,4 @@
-import { saveOrderToAPI } from "./dataAccess.js"
+import { postCustomer, saveOrderToAPI } from "./dataAccess.js"
 
 const container = document.querySelector("#container")
 
@@ -8,7 +8,7 @@ container.addEventListener(
     "click",
     (clickEvent) => {
         if (clickEvent.target.id === "submitOrder") {
-            saveOrderToAPI()
+            postCustomer()
         }
     }
 )

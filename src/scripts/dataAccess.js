@@ -47,8 +47,10 @@ export const setEventDescription = (description) => {
     applicationState.orderBuilder.description = description
 }
 
+const apiURL = "http://localhost:8088"
+
 export const fetchProducts = () => {
-    return fetch("http://localhost:8088/products")
+    return fetch(`${apiURL}/products`)
         .then(
             response => response.json()
         )
@@ -57,6 +59,74 @@ export const fetchProducts = () => {
                 applicationState.products = data
             }
         )
+}
+
+/*
+{
+    "id": 1,
+    "name": "Hugh Jass",
+    "email": "hugh@jass.com",
+    "phoneNumber": "615-333-4444"
+}
+*/
+
+export const postCustomer = () => {
+    const newCustomerToBeCreated = {
+        name: applicationState.orderBuilder.name,
+        email: applicationState.orderBuilder.email,
+        phoneNumber: applicationState.orderBuilder.phone
+    }
+
+    return fetch(`${apiURL}/customers`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newCustomerToBeCreated)
+    })
+        .then(response => response.json())
+        .then((customer) => {
+            postOrder(customer)
+        })
+}
+
+/*
+{
+      "id": 1,
+      "eventDescription": "Wedding",
+      "eventDate": "2021-06-01",
+      "hoursNeeded": 0,
+      "orderPlaced": "2021-05-10",
+      "customerId": 1,
+      "isComplete": false
+}
+
+*/
+
+export const postOrder = (customerObject) => {
+    const newDate = new Date()
+
+    const newOrderToBeCreated = {
+        eventDescription: applicationState.orderBuilder.description,
+        eventDate: applicationState.orderBuilder.date,
+        hoursNeeded: 0,
+        isComplete: false,
+        orderPlaced: newDate.toISOString().split("T")[0],
+        customerId: customerObject.id
+    }
+
+
+    return fetch(`${apiURL}/orders`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newOrderToBeCreated)
+    })
+        .then(response => response.json())
+        .then(() => {
+
+        })
 }
 
 export const getProducts = () => {

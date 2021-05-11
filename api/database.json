@@ -1,54 +1,75 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Opera Cake",
-            "productTypeId": 1,
-            "price": 20.00
-        },
-        {
-            "id": 2,
-            "name": "Pecan Pie",
-            "productTypeId": 2,
-            "price": 1500.99
-        }
-    ],
-    "customers": [
-        {
-            "id": 1,
-            "name": "Hugh Jass",
-            "email": "hugh@jass.com",
-            "phoneNumber": "615-333-4444"
-        }
-    ],
-    "orders": [
-        {
-            "id": 1,
-            "eventDescription": "Wedding",
-            "eventDate": "2021-06-01",
-            "hoursNeeded": 0,
-            "orderPlaced": "2021-05-10",
-            "customerId": 1,
-            "isComplete": false
-        }
-    ],
-    "orderProducts": [
-        {
-            "id": 1,
-            "orderId": 1,
-            "productId": 1
-        }
-    ],
-    "employees": [],
-    "productTypes": [
-        {
-            "id": 1,
-            "name": "Cakes"
-        },
-        {
-            "id": 2,
-            "name": "Pies"
-        }
-    ],
-    "employeeOrders": []
+  "products": [
+    {
+      "id": 1,
+      "name": "Opera Cake",
+      "productTypeId": 1,
+      "price": 20
+    },
+    {
+      "id": 2,
+      "name": "Pecan Pie",
+      "productTypeId": 2,
+      "price": 1500.99
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "Hugh Jass",
+      "email": "hugh@jass.com",
+      "phoneNumber": "615-333-4444"
+    },
+    {
+      "name": "tyvgiuhb",
+      "email": "gyubuobouh",
+      "phoneNumber": "huibuibioub",
+      "id": 2
+    },
+    {
+      "name": "a",
+      "email": "a@a.com",
+      "phoneNumber": "5",
+      "id": 3
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "eventDescription": "Wedding",
+      "eventDate": "2021-06-01",
+      "hoursNeeded": 0,
+      "orderPlaced": "2021-05-10",
+      "customerId": 1,
+      "isComplete": false
+    },
+    {
+      "eventDescription": "Yay",
+      "eventDate": "2021-12-22",
+      "hoursNeeded": 0,
+      "isComplete": false,
+      "orderPlaced": "2021-05-11",
+      "customerId": 3,
+      "id": 2
+    }
+  ],
+  "orderProducts": [
+    {
+      "id": 1,
+      "orderId": 1,
+      "productId": 1
+    }
+  ],
+  "employees": [],
+  "productTypes": [
+    {
+      "id": 1,
+      "name": "Cakes"
+    },
+    {
+      "id": 2,
+      "name": "Pies"
+    }
+  ],
+  "employeeOrders": []
 }
