@@ -7,12 +7,14 @@ export const UniquasTreats = () => {
     return `
         <h1>Uniqua's Treats and Catering</h1>
 
-        <article>
-            ${ Products() }
-        </article>
-        <article>
-            ${ EventForm() }
-        </article>
+        <div class="topFlex">
+            <article>
+                ${ Products() }
+            </article>
+            <article>
+                ${ EventForm() }
+            </article>
+        </div>
         <article>
             ${ ChosenProducts() }
         </article>
