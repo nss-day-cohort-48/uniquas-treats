@@ -15,3 +15,10 @@ const renderHTML = () => {
 
 renderHTML()
 
+mainContainer.addEventListener(
+    "stateChanged",
+    () => {
+        console.log("*** API state has changed, I will now generate all of the HTML again")
+        renderHTML()
+    }
+)

@@ -1,3 +1,6 @@
+const mainContainer = document.querySelector("#container")
+
+
 const applicationState = {
     products: [],
     orderBuilder: {
@@ -61,15 +64,6 @@ export const fetchProducts = () => {
         )
 }
 
-/*
-{
-    "id": 1,
-    "name": "Hugh Jass",
-    "email": "hugh@jass.com",
-    "phoneNumber": "615-333-4444"
-}
-*/
-
 export const postCustomer = () => {
     const newCustomerToBeCreated = {
         name: applicationState.orderBuilder.name,
@@ -89,19 +83,6 @@ export const postCustomer = () => {
             postOrder(customer)
         })
 }
-
-/*
-{
-      "id": 1,
-      "eventDescription": "Wedding",
-      "eventDate": "2021-06-01",
-      "hoursNeeded": 0,
-      "orderPlaced": "2021-05-10",
-      "customerId": 1,
-      "isComplete": false
-}
-
-*/
 
 export const postOrder = (customerObject) => {
     const newDate = new Date()
@@ -124,9 +105,31 @@ export const postOrder = (customerObject) => {
         body: JSON.stringify(newOrderToBeCreated)
     })
         .then(response => response.json())
-        .then(() => {
+        .then(
+            (orderObject) => {
+                for (const productId of applicationState.orderBuilder.chosenProducts) {
+                    postOrderProductRelationship(orderObject.id, productId)
+                }
+            }
+        )
+}
 
-        })
+const postOrderProductRelationship = (orderId, productId) => {
+    const relationship = { orderId, productId }
+
+    return fetch(`${apiURL}/orderProducts`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(relationship)
+    })
+        .then(response => response.json())
+        .then(
+            () => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
 }
 
 export const getProducts = () => {
